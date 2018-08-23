@@ -1,0 +1,13 @@
+extends ../shared/layout
+block main-content
+  div
+    form.form-small(method="post" action="/users/authenticate")
+      fieldset
+        legend Log In
+        label(for="username") Username
+        input(type="text" name="username" id="username")
+        br
+        label(for="password") Password
+        input(type="password" name="password" id="password")
+        br
+        input.btn.btn-large(type="submit" value="Log In")

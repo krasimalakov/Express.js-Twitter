@@ -1,0 +1,11 @@
+extends ../shared/layout
+  
+block main-content
+  h1= 'Profile page for user: ' + user.username + ' - ' + user.fullName
+  
+  if (user.tweets.length>0)
+    h3 Tweets:
+    each tweet in user.tweets
+      include ../tweets/tweet-simple
+  else
+    h3 No tweets!

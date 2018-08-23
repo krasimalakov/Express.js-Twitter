@@ -1,0 +1,1 @@
+Seed user with username: admin, password: 1234

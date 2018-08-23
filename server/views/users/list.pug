@@ -1,0 +1,22 @@
+extends ../shared/layout
+  
+block main-content
+  div.doc-edit
+    if (users.length>0)
+      h1= message
+    else
+      h1 Not found users!
+    
+    ul
+    each user in users
+      li.list
+        span
+          span= user.username +' - '+user.fullName
+          span.small= ' | Tweets:' + user.tweets.length
+          br
+          a.btn(href=`/profile/${user.username}`) List Tweets
+          if (user.roles.indexOf('Admin')===-1)
+            form.btn-form(id=`add-admin-${user.username}` method="post" action=`/admins/add/${user.username}`)
+              a.btn(href=`javascript:document.getElementById("add-admin-${user.username}").submit()` 
+                class={disabled:!isAdmin()}) Add as Admin
+              

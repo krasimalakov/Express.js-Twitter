@@ -1,0 +1,23 @@
+div.list
+  div.tweet-content
+    span= ' ' + tweet.message
+    br
+    if (tweet.tags.length>0)
+      span(style='font-size:80%; color:blue')= ' | Tags: '+ tweet.tags
+    span(style='font-size:80%')= ' | created on:' + tweet.createdOn
+    span(style='font-size:80%; color:red')= ' | views:' + tweet.views
+    span(style='font-size:80%; color:green')= ' | likes:' + tweet.likes.length
+    if (tweet.author.firstName)
+      span(style='font-size:80%; color:lightblue')= ' | Author: ' + tweet.author.fullName+ ' '
+    if (currentUser)
+      if (tweet.likes.indexOf(currentUser._id)===-1)
+        form.btn-form(id=`like-${tweet._id}` method="post" action=`/tweet/like/${tweet._id}/`)
+          a.btn(href=`javascript:document.getElementById("like-${tweet._id}").submit()`) Like
+      else
+        form.btn-form(id=`unlike-${tweet._id}` method="post" action=`/tweet/unlike/${tweet._id}/`)
+          a.btn.delete(href=`javascript:document.getElementById("unlike-${tweet._id}").submit()`) Unlike
+    if (isAdmin())
+      form.btn-form(id=`delete-${tweet._id}` method="post" action=`/tweet/delete`)
+        input(type="hidden" name="tweetId" value=tweet._id)
+        a.btn.delete(href=`javascript:document.getElementById("delete-${tweet._id}").submit()`) Delete
+      a.btn(href=`/tweet/edit/${tweet._id}`) Edit

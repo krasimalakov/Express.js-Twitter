@@ -1,0 +1,13 @@
+extends ../shared/layout
+block main-content
+  form.doc-edit(method='POST', action='/tweet/create')
+    fieldset
+      legend Add new tweet
+      label Author
+      p= currentUser.username + ' - ' + currentUser.fullName
+      input(type='hidden' name='userId' value= currentUser._id)
+      br
+      label(for='message') Message
+      textarea(id='message' type='text' name='message' maxlength="140" rows='3' cols='70' required)
+      br
+      input.btn.btn-large(type='submit' value="Create")

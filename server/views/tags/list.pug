@@ -1,0 +1,15 @@
+extends ../shared/layout
+  
+block main-content
+  div.doc-edit
+    if (tags.length>0)
+      h1 List of all tags
+    else
+      h1 Not found tags!
+    ul
+    each tag in tags
+      li.list
+        span
+          span= tag._id
+          span.small= ' | Tweets:' + tag.tweets.length
+          a.btn(href=`/tag/${tag._id}`) List Tweets

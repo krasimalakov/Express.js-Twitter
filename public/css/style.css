@@ -1,0 +1,177 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+  color: blue;
+  margin: 0 auto;
+}
+.menu {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+ul.menu-left{
+  float: left;
+}
+ul.menu-right{
+  float: right;
+}
+ul.menu{
+  padding-bottom: 3px;
+}
+.menu li {
+  display: inline-block;
+  margin-right: 2px;
+}
+.menu a {
+  text-decoration: none;
+  border:1px solid lightblue;
+  background-color: blue;
+  color: white;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+.menu a:hover{
+  background-color: dodgerblue;
+}
+li>ul.submenu{
+  position: absolute; 
+  display: none;
+  padding-left: 0;
+  background-color: white;
+}
+li>ul.submenu li{
+  display: block;
+  margin-right: 0;
+  padding: 1px 0;
+  min-width: 100px;
+}
+.submenu a{
+  display: block;
+}
+li:hover>ul.submenu, li>ul.submenu:hover{
+  display: block;
+}
+#logout-form, .btn-form{
+  margin: 0;
+  display: inline;
+}
+
+.btn{
+  border: lightblue solid 1px;
+  border-radius: 8px;
+  background-color: blue;
+  margin: 5px;
+  padding: 0px 5px;
+  display: inline-block;
+  min-width: 2.5%;
+  font-size: 60%;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+.btn:hover{
+  background: dodgerblue;
+}
+.btn.delete{
+   background-color: red;
+   opacity: 0.7;
+   color: white;
+}
+.btn.delete:hover{
+  color:white;
+  opacity: 1;
+  background: red;
+}
+.btn-large{
+  display: inline-block;
+  font-size: 100%;
+  min-width: 3.5em;
+  padding: 0px 5px;
+
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.2;
+}
+
+.container {
+  display: block;
+  clear: both;
+  border-top: 1px solid lightblue;
+}
+.doc-edit{
+  width: 60%;
+  margin: 20px auto 0;
+}
+.doc-edit label{
+  width: 15%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: right;
+  padding-right: 1%;
+}
+.doc-edit input, .doc-edit select, .doc-edit p{
+  /*width: 50%;*/
+  display: inline-block;
+  margin: 0 0 2%;
+}
+
+.form-small{
+  width: 30%;
+  margin: 20px auto 0;
+}
+.form-small legend, .doc-edit legend{
+  color: blue;
+  font-size: 1.7em;
+}
+.form-small label{
+  width: 37%;
+  display: inline-block;
+  text-align: right;
+  padding-right: 1%;
+}
+.form-small input{
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 2%;
+}
+.form-small input.btn{
+  margin: 5% auto 0;
+  display: block;
+}
+.thread-details{
+  display: block;
+  margin: 0 auto;
+}
+.thread-details div{
+  display: inline-block;
+}
+.list{
+    border-bottom: 1px solid lightblue;
+    /*height: 1.8em;*/
+    padding: 0.15em;
+    margin: 0;
+}
+.thread-content{
+  width: 81%;
+  display: inline-block;
+}
+.global-error{
+  text-align: center;
+  color: red;
+  border: 1px solid red;
+}
+.global-message{
+  text-align: center;
+  color: blue;
+}
+.small{
+  font-size: 80%;
+}
+.pagination{
+  margin: 1em auto 0;
+  display: table;
+}

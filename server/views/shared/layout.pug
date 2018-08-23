@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    title Twetter
+    link(href="/css/style.css" rel="stylesheet")
+  body
+    - let isAuth = function (doc){
+    -    let authorId=doc.author._id?doc.author._id.toString():doc.author.toString()
+    -    return (currentUser!=null) && ((authorId == currentUser._id.toString())||(currentUser.roles.indexOf('Admin')>-1))
+    -  }
+    - let isAdmin = function (){
+    -    return ((currentUser!=null) && (currentUser.roles.indexOf('Admin')>-1))
+    -  }
+    nav
+      ul.menu.menu-left
+        li
+          a(href="/") Home
+        li
+          a(href="/tweet"  class={disabled:!currentUser}) Add tweet
+        li
+          a(href="/tags") Tags
+        li 
+          a(class={disabled:!currentUser}) Users
+          ul.submenu
+            li 
+              a(href="/users/list"  class={disabled:!currentUser}) List all Users
+            li 
+              a(href="/admins/all"  class={disabled:!isAdmin()}) List all Admins
+      ul.menu.menu-right
+        if (currentUser)
+          li
+            span= currentUser.username
+          li
+            form#logout-form(method="post" action="/users/logout")
+              a(href="javascript:document.getElementById('logout-form').submit()") Logout
+        else 
+          li
+            a(href="/users/register") Register
+          li
+            a(href="/users/login") Log In
+    .container
+      if (globalError)
+        h3.global-error= globalError
+      block main-content

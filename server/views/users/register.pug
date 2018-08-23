@@ -1,0 +1,22 @@
+extends ../shared/layout
+block main-content
+  div
+    form.form-small(method="post" action="/users/create")
+      fieldset
+        legend Register
+        label(for="username") Username
+        input(type="text" name="username" id="username" value=username required)
+        br
+        label(for="password") Password
+        input(type="password" name="password" id="password" required)
+        br
+        label(for="confirm-password") Confirm Password
+        input(type="password" name="confirmPassword" id="confirm-password" required)
+        br
+        label(for="first-name") First Name
+        input(type="text" name="firstName" id="first-name" value=firstName required)
+        br
+        label(for="last-name") Last Name
+        input(type="text" name="lastName" id="last-name" value=lastName required)
+        br
+        input.btn.btn-large(type="submit" value="Register")

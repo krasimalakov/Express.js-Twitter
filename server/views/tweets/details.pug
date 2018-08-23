@@ -1,0 +1,42 @@
+extends ../shared/layout
+block main-content
+  if (threadId)
+    h1= 'Not found thread with id:' +threadId
+  else  
+    h1 Thread details
+    div.thread-details
+      if (thread.image)
+        div
+          image(src=`/images/${thread.image}`, style='max-height: 6em; max-width: 100%;')
+      div
+        p= 'Title: ' +thread.title
+        p(style='font-size:80%')= 'Category:' + thread.category.name
+        p
+          span(style='font-size:80%')= 'Author - ' + thread.author.fullName
+          span(style='font-size:80%')= '| created on:' + thread.createdOn
+          span(style='font-size:80%')= '| views:' + thread.views
+          span(style='font-size:80%; color:green')= ' | likes:' + thread.likes.length
+      br
+      textarea(style='min-width:50%')= thread.content
+      br
+      if (isAuth(thread))
+        a.btn.btn-large(href=`/post/edit/${thread._id}`) Edit
+      if (isAdmin())
+        form.btn-form(id=`delete-${thread._id}` method="post" action=`/post/delete/${thread._id}`)
+          a.btn.btn-large.delete(href=`javascript:document.getElementById("delete-${thread._id}").submit()`) Delete
+      if (currentUser)
+        if (thread.likes.indexOf(currentUser._id)===-1)
+          form.btn-form(id=`like-${thread._id}` method="post" action=`/post/like/${thread._id}/`)
+            input(type="hidden" name="redirectMethodPost" value=1)
+            a.btn.btn-large(href=`javascript:document.getElementById("like-${thread._id}").submit()`) Like
+        else
+          form.btn-form(id=`unlike-${thread._id}` method="post" action=`/post/unlike/${thread._id}/`)
+            input(type="hidden" name="redirectMethodPost" value=1)
+            a.btn.btn-large.delete(href=`javascript:document.getElementById("unlike-${thread._id}").submit()`) Unlike
+
+    div
+      h3 'Answers:'
+      each answer in thread.answers
+        include ../answers/answer-simple
+    if (currentUser&&!isBlocked())
+      include ../answers/add

@@ -1,0 +1,15 @@
+extends ../shared/layout
+block main-content
+  form.doc-edit(method='POST', action='/tweet/update')
+    fieldset
+      legend Edit tweet
+      input(type='hidden' name='tweetId' value= tweet._id)
+      label Author
+      p= tweet.author.username + '-'+tweet.author.fullName
+      input(type='hidden' name='userId' value= tweet.author._id)
+      br
+      label(for='message') Message
+      input(type='hidden' name='oldMessage' value= tweet.message)
+      textarea(id='message' type='text' name='message' maxlength="140" rows='3' cols='70' required)= tweet.message
+      br
+      input.btn.btn-large(type='submit' value="Update")

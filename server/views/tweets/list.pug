@@ -1,0 +1,13 @@
+extends ../shared/layout
+  
+block main-content
+  if (tweets.length>0)
+    if (tag)
+      h1= 'List of tweets for tag:'+tag  
+    else
+      h1 List of all tweets
+  else
+    h1 Not found tweets!
+  
+  each tweet in tweets
+    include tweet-simple

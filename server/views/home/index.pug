@@ -1,0 +1,7 @@
+extends ../shared/layout
+block main-content
+  if (!globalError)
+    if (currentUser)
+      h1.global-message= 'Hello '+currentUser.username+' !'
+    else
+      h1.global-message= 'Hello guest !'
